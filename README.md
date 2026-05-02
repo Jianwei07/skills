@@ -162,6 +162,21 @@ General workflow tools, not code-specific.
 - **[grill-me](./skills/productivity/grill-me/SKILL.md)** — Get relentlessly interviewed about a plan or design until every branch of the decision tree is resolved.
 - **[write-a-skill](./skills/productivity/write-a-skill/SKILL.md)** — Create new skills with proper structure, progressive disclosure, and bundled resources.
 
+### Jayden Workflow
+
+Personal OpenCode/GSD-lite workflow layer. These branch from Matt-style skills without editing Matt skill files.
+
+- **[caveman-commit](./skills/jayden-workflow/caveman-commit/SKILL.md)** — Ultra-compressed conventional commit message generator.
+- **[caveman-compress](./skills/jayden-workflow/caveman-compress/SKILL.md)** — Compress natural language memory files into caveman format.
+- **[caveman-help](./skills/jayden-workflow/caveman-help/SKILL.md)** — Quick reference for caveman modes, skills, and commands.
+- **[caveman-review](./skills/jayden-workflow/caveman-review/SKILL.md)** — Ultra-compressed code review comments.
+- **[compress](./skills/jayden-workflow/compress/SKILL.md)** — Legacy alias for caveman memory-file compression.
+- **[gsd-lite-context](./skills/jayden-workflow/gsd-lite-context/SKILL.md)** — Defines project-local `.planning/` as the central GSD-lite context spine.
+- **[gsd-lite-debug](./skills/jayden-workflow/gsd-lite-debug/SKILL.md)** — Persistent GSD-lite debugging wrapper around Matt's `diagnose` loop.
+- **[gsd-lite-review](./skills/jayden-workflow/gsd-lite-review/SKILL.md)** — Compact GSD-style code review for changed files.
+- **[gsd-lite-verify](./skills/jayden-workflow/gsd-lite-verify/SKILL.md)** — Goal-backward verification for completed work.
+- **[map-codebase-architecture](./skills/jayden-workflow/map-codebase-architecture/SKILL.md)** — Map a codebase into lean GSD-compatible architecture docs using Matt-style architecture vocabulary.
+
 ### Misc
 
 Tools I keep around but rarely use.

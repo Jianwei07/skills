@@ -1,0 +1,28 @@
+# OS/editor noise
+.DS_Store
+*.swp
+*.swo
+
+# Secrets/local env
+.env
+.env.*
+!.env.example
+
+# Package caches
+node_modules/
+.npm/
+.pnpm-store/
+
+# Agent/runtime state
+.agents/state/
+.claude/settings.local.json
+.opencode-backups/
+*.backup.*
+
+# Logs/temp
+*.log
+tmp/
+temp/
+
+# Local-only config overlays
+opencode/opencode.local.json

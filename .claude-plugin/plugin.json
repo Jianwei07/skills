@@ -10,8 +10,22 @@
     "./skills/engineering/to-issues",
     "./skills/engineering/to-prd",
     "./skills/engineering/zoom-out",
+    "./skills/jayden-workflow/caveman-commit",
+    "./skills/jayden-workflow/caveman-compress",
+    "./skills/jayden-workflow/caveman-help",
+    "./skills/jayden-workflow/caveman-review",
+    "./skills/jayden-workflow/compress",
+    "./skills/jayden-workflow/gsd-lite-context",
+    "./skills/jayden-workflow/gsd-lite-debug",
+    "./skills/jayden-workflow/gsd-lite-review",
+    "./skills/jayden-workflow/gsd-lite-verify",
+    "./skills/jayden-workflow/map-codebase-architecture",
     "./skills/productivity/caveman",
     "./skills/productivity/grill-me",
-    "./skills/productivity/write-a-skill"
+    "./skills/productivity/write-a-skill",
+    "./skills/misc/git-guardrails-claude-code",
+    "./skills/misc/migrate-to-shoehorn",
+    "./skills/misc/scaffold-exercises",
+    "./skills/misc/setup-pre-commit"
   ]
 }
