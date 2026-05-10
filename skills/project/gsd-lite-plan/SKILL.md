@@ -65,8 +65,13 @@ Quality gates:
 - BE test: <command | N/A | MISSING>
 Tests policy: tests under tests/; update TESTS.md when non-trivial.
 Execution gate: CLOSED
-Execute only after explicit user command.
-Suggested command: execute current plan
+Awaiting user approval/revision.
+```
+
+Do not print or recommend an execute command as the next step. Offer review choices instead:
+
+```text
+Next: approve plan | revise plan | grill this decision | stop
 ```
 
 ## Rules
@@ -75,11 +80,13 @@ Suggested command: execute current plan
 - Use goal-backward must-haves.
 - Use exact files, actions, verification, done criteria.
 - Use Module/Interface/Seam/Depth language for architecture choices.
-- If ambiguity changes direction, Interface, keep/delete call, first-slice scope, irreversible action, or acceptance criteria -> run `grill-me` before plan.
+- If ambiguity changes direction, Interface, keep/delete call, first-slice scope, design system, visual direction, provider/cost posture, irreversible action, or acceptance criteria -> run `grill-me` before plan.
 - If ambiguity only affects later execution -> record in `.planning/current/QUESTIONS.md`; planning may continue.
+- If user asks broad design/product direction questions, or if `DESIGN.md` exists and the plan changes UI/visual direction, load `design-md` and run one `grill-me` choice unless prior docs answer the decision clearly.
 - If quality commands are missing, add a setup task before feature/refactor tasks; use existing package manager (`pnpm`/`npm`/`uv`/etc.) and minimal dev deps.
 - Test tasks must create/update tests under `tests/` and update root `TESTS.md` when coverage is non-trivial.
 - Ask one grill question at a time. If code inspection can answer it, inspect instead of asking.
 - Do not execute.
 - Do not imply execution approval.
+- Do not recommend an execute command in the final planning/check response; say the gate is closed and ask whether to approve, revise, grill, or stop.
 - No scope reduction. Split instead.

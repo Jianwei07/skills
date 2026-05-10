@@ -45,6 +45,19 @@ Treat `/execute` as a workflow phrase unless a real runtime command exists.
 
 ## Required Gates
 
+### Companion Skills
+
+Jayden Workflow may work hand-in-hand with focused skills. Load them when the user goal or repo artifacts call for them; they refine the plan, they do not bypass gates.
+
+Common companions:
+
+- `design-md` when the user references `DESIGN.md`, design tokens, visual identity, UI polish, accessibility, Tailwind/theme export, or Google DESIGN.md.
+- `tdd` when adding/changing behavior with meaningful tests.
+- `setup-pre-commit` when quality commands/tooling are missing.
+- `grill-me` when direction/design/product/API ambiguity changes the first slice.
+
+If a companion skill is used, note it in `.planning/current/HANDOFF.md` under `Skills used:`.
+
 ### Direction Check
 
 After pivot/direction and before plan, state once:
@@ -68,9 +81,10 @@ Reason: <one line>
 
 Rules:
 
-- If ambiguity changes direction, Interface, keep/delete call, first-slice scope, irreversible action, or acceptance criteria -> run `grill-me` before plan.
+- If ambiguity changes direction, Interface, keep/delete call, first-slice scope, design system, visual direction, provider/cost posture, irreversible action, or acceptance criteria -> run `grill-me` before plan.
 - If ambiguity only affects later execution -> record in `.planning/current/QUESTIONS.md`; planning may continue.
 - If no material ambiguity -> mark `SKIPPED_NOT_NEEDED` with reason.
+- Do not mark `SKIPPED_NOT_NEEDED` when the user asks broad design/product direction questions (e.g. "improve the design", "make it feel better", "which provider?", "what should the first slice be?"). Those require one `grill-me` choice unless prior docs answer them clearly.
 - Do not repeat gate text in every section.
 
 ## Project Artifacts

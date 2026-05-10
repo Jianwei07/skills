@@ -39,10 +39,10 @@ Grill Gate: NEEDED_AND_RAN | NEEDED_BUT_BLOCKED | SKIPPED_NOT_NEEDED
 Quality Gates: READY | MISSING | NOT_APPLICABLE
 Execution gate: CLOSED
 Reason: <one line>
-Next: <one line>
+Next: approve plan | revise plan | grill this decision | stop
 ```
 
-Do not repeat `Check result` multiple times.
+Do not use `Next: execute current plan` or recommend execution commands. PASS means the user may review/approve; it is not an execution prompt.
 
 ## Rules
 
@@ -56,6 +56,7 @@ Do not repeat `Check result` multiple times.
 - Block plans with `NEEDS_GRILL`, `BLOCKED`, or `NEEDED_BUT_BLOCKED` unless the user explicitly accepts the risk.
 - For architecture/refactor/debloat plans, require `improve-codebase-architecture` or an explicit reason it was skipped.
 - Keep execution gate closed even on PASS.
-- PASS means ready for user approval, not permission to execute.
+- PASS means ready for user review/approval, not permission to execute.
+- Do not suggest execute as the immediate next step; offer approve/revise/grill/stop.
 - Do not execute.
 - Revise plan up to 3 times when fixable.
