@@ -66,9 +66,15 @@ Quality gates:
 - BE typecheck: <command | N/A | MISSING>
 - BE test: <command | N/A | MISSING>
 Tests policy: tests under tests/; update TESTS.md when non-trivial.
+Commit checkpoints:
+- Needed: yes | no
+- Slice 1: <intent> | files: <paths/globs> | verify: <command or same as final>
+- Slice 2: <intent> | files: <paths/globs> | verify: <command or same as final>
 Execution gate: CLOSED
 Awaiting user approval/revision.
 ```
+
+If checkpoints are not needed, write `Needed: no — <reason>` and omit slices.
 
 Do not print or recommend an execute command as the next step. Offer review choices instead:
 
@@ -81,6 +87,9 @@ Next: approve plan | revise plan | grill this decision | stop
 - Plans are prompts. Executor should not guess.
 - Do not create a plan from broad discovery alone. First ask for/select one direction or slice.
 - Keep plan artifacts lean: only files, actions, verification, done criteria needed for the selected slice.
+- Add commit checkpoints when a plan likely touches >10 paths, mixes seams, or includes more than one kind of work (planning docs, tooling, feature, tests, cleanup). Each checkpoint must leave the repo working, following Fowler's small-refactor rule.
+- Checkpoint slices should be by intent and seam, not by arbitrary file count: planning docs, tooling setup, one Module/Interface change, tests for that Interface, cleanup.
+- Do not include PR creation in plan/execute. PR prep starts only after `gsd-lite-verify` and explicit user request.
 - Use goal-backward must-haves.
 - Use exact files, actions, verification, done criteria.
 - Use Module/Interface/Seam/Depth language for architecture choices.

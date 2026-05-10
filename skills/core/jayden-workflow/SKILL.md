@@ -121,7 +121,7 @@ Everything else is on-demand.
 - Manual gated workflow. Plan/check never implies execute.
 - Execute only after explicit user command.
 - Quality gates are mandatory for code changes: discover FE/BE lint, format:check, typecheck, and test commands; run applicable checks before commit; record results in `.planning/current/VERIFY.md`.
-- Execution uses commit checkpoints: pre-execute git status, stop on dirty tree, and pause for `caveman-commit` slices when a diff grows past ~10 paths or mixes unrelated seams. No PR during execute unless explicitly requested after verify.
+- Execution uses commit checkpoints: plan slices before execute, pre-execute git status, stop on dirty tree, and pause for `caveman-commit` slices when a diff grows past ~10 paths or mixes unrelated seams. No PR during execute unless explicitly requested after verify.
 - Package/tooling setup must follow existing lockfiles (`pnpm`/`npm`/`uv`/etc.) and add only minimal dev dependencies needed for standard commands.
 - Tests live under `tests/`; use root `TESTS.md` when coverage becomes non-trivial; remove duplicate/bloated tests.
 - Caveman is core purpose: cut token usage by default. Terse, structured, no filler.

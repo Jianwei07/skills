@@ -14,3 +14,4 @@
 - Tighten planning/check gates so PASS never suggests immediate execution; final planning output should offer approve/revise/grill/stop. Add companion-skill rule so `design-md` can work with Jayden Workflow for DESIGN.md/UI work without bypassing gates.
 - Add budgeted two-pass Jayden Workflow default: broad discovery stops after inventory + direction choices + Grill Gate; full planning starts only after user/durable-doc direction selection.
 - Add execute-time commit checkpoints: pre-execute git status, pause on dirty/large/mixed diffs, draft small conventional commits with `caveman-commit`, and avoid PR creation until verify + explicit request.
+- Move checkpoint discipline into planning/checking too: large or mixed plans must predeclare working commit slices by intent/seam, and check blocks missing checkpoint slices before execution.
