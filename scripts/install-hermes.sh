@@ -36,3 +36,4 @@ while IFS= read -r -d '' skill_md; do
 done
 
 echo "Done. In an existing Hermes session run /reload-skills, or start a new session."
+echo "Jayden workflow is manual-gated: plan/check stop; execute only after explicit user command."

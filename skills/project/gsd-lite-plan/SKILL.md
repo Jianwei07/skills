@@ -1,14 +1,14 @@
 ---
 name: gsd-lite-plan
-description: Creates decision-complete executable plans using Jayden Workflow meta-prompting, codebase maps, and Matt architecture language. Use for feature, bugfix, refactor, pivot, or first-slice planning before execution.
+description: Creates decision-complete draft plans using Jayden Workflow gates, codebase maps, Matt architecture language, and explicit grill-gate status. Always stops after plan/check; execution requires a separate user command.
 ---
 
 # GSD-Lite Plan
 
-Objective: turn goal -> executable prompt-plan.
+Objective: turn goal -> executable prompt-plan. Stop before execution.
 
 Upstream:
-- GSD `plan-phase` orchestration and planner/checker loop.
+- GSD `plan-phase` planner/checker loop.
 - Matt architecture language and `improve-codebase-architecture`.
 - Jayden `.planning/current/*` artifact model.
 
@@ -21,15 +21,42 @@ Read:
 ## Chain
 
 ```text
-gsd-lite-context -> gsd-lite-plan -> gsd-lite-check
+Direction Check -> Grill Gate -> gsd-lite-plan -> gsd-lite-check -> STOP
 ```
+
+Architecture/refactor/debloat chain:
+
+```text
+map-codebase-architecture -> improve-codebase-architecture -> Direction Check -> Grill Gate -> gsd-lite-plan -> gsd-lite-check -> STOP
+```
+
+## Inputs
+
+Before writing a plan, ensure:
+
+```text
+Direction Check: CONFIRMED | NEEDS_GRILL | BLOCKED
+Grill Gate: NEEDED_AND_RAN | NEEDED_BUT_BLOCKED | SKIPPED_NOT_NEEDED
+```
+
+If missing, add them. If `NEEDS_GRILL`, run `grill-me` first. If `BLOCKED` or `NEEDED_BUT_BLOCKED`, write questions and stop.
 
 ## Outputs
 
 - `.planning/current/PLAN.md`
 - `.planning/current/TODO.md`
-- `.planning/current/DECISIONS.md` when decisions accepted
-- `.planning/current/QUESTIONS.md` when blocked
+- `.planning/current/DECISIONS.md` only for durable accepted decisions
+- `.planning/current/QUESTIONS.md` only when unresolved execution questions exist
+
+## Plan Footer
+
+End `PLAN.md` with:
+
+```text
+Execution gate: CLOSED
+Execute only after explicit user command.
+Suggested command: execute current plan
+```
 
 ## Rules
 
@@ -37,5 +64,9 @@ gsd-lite-context -> gsd-lite-plan -> gsd-lite-check
 - Use goal-backward must-haves.
 - Use exact files, actions, verification, done criteria.
 - Use Module/Interface/Seam/Depth language for architecture choices.
-- Grill before planning if intent, interface, keep/delete, or acceptance criteria are unclear.
+- If ambiguity changes direction, Interface, keep/delete call, first-slice scope, irreversible action, or acceptance criteria -> run `grill-me` before plan.
+- If ambiguity only affects later execution -> record in `.planning/current/QUESTIONS.md`; planning may continue.
+- Ask one grill question at a time. If code inspection can answer it, inspect instead of asking.
+- Do not execute.
+- Do not imply execution approval.
 - No scope reduction. Split instead.

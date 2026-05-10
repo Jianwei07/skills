@@ -1,71 +1,126 @@
 ---
 name: improve-codebase-architecture
-description: Find deepening opportunities in a codebase, informed by the domain language in CONTEXT.md and the decisions in docs/adr/. Use when the user wants to improve architecture, find refactoring opportunities, consolidate tightly-coupled modules, or make a codebase more testable and AI-navigable.
+description: Use when improving architecture, reviving stale repos, finding refactor/debloat opportunities, or making codebases more testable and AI-navigable. Finds deepening candidates, then passes selected work through Direction Check and Grill Gate before planning.
+version: 1.1.0
+author: Jayden + Matt Pocock-inspired workflow
+license: MIT
+metadata:
+  hermes:
+    tags: [architecture, refactor, deep-modules, codebase, debloat]
+    related_skills: [grill-me, map-codebase-architecture, gsd-lite-plan, gsd-lite-check]
 ---
 
 # Improve Codebase Architecture
 
-Surface architectural friction and propose **deepening opportunities** — refactors that turn shallow modules into deep ones. The aim is testability and AI-navigability.
+Goal: find small, high-leverage architecture moves. No generic cleanup. No big refactor plan before gates.
 
-## Glossary
+## Chain
 
-Use these terms exactly in every suggestion. Consistent language is the point — don't drift into "component," "service," "API," or "boundary." Full definitions in [LANGUAGE.md](LANGUAGE.md).
+```text
+map-codebase-architecture -> improve-codebase-architecture -> Direction Check -> Grill Gate -> gsd-lite-plan -> gsd-lite-check -> STOP
+```
 
-- **Module** — anything with an interface and an implementation (function, class, package, slice).
-- **Interface** — everything a caller must know to use the module: types, invariants, error modes, ordering, config. Not just the type signature.
-- **Implementation** — the code inside.
-- **Depth** — leverage at the interface: a lot of behaviour behind a small interface. **Deep** = high leverage. **Shallow** = interface nearly as complex as the implementation.
-- **Seam** — where an interface lives; a place behaviour can be altered without editing in place. (Use this, not "boundary.")
-- **Adapter** — a concrete thing satisfying an interface at a seam.
-- **Leverage** — what callers get from depth.
-- **Locality** — what maintainers get from depth: change, bugs, knowledge concentrated in one place.
+Use before `gsd-lite-plan` for architecture/refactor/debloat/stale-project work.
 
-Key principles (see [LANGUAGE.md](LANGUAGE.md) for the full list):
+## Language
 
-- **Deletion test**: imagine deleting the module. If complexity vanishes, it was a pass-through. If complexity reappears across N callers, it was earning its keep.
-- **The interface is the test surface.**
-- **One adapter = hypothetical seam. Two adapters = real seam.**
+Use Matt terms:
 
-This skill is _informed_ by the project's domain model. The domain language gives names to good seams; ADRs record decisions the skill should not re-litigate.
+- **Module** — thing with Interface + Implementation.
+- **Interface** — everything caller must know: types, invariants, errors, ordering, config, side effects.
+- **Implementation** — code behind Interface.
+- **Depth** — leverage behind small Interface. Shallow = Interface nearly as complex as Implementation.
+- **Seam** — where Interface lives; behavior can change without editing all callers.
+- **Adapter** — concrete thing satisfying Interface at Seam.
+- **Leverage** — caller benefit.
+- **Locality** — change/bugs/knowledge concentrated in one place.
+
+Tests:
+
+- **Deletion test**: delete Module mentally. Complexity vanish = bloat. Complexity reappears across callers = Module earns keep.
+- **Interface is test surface**.
+- **One Adapter = hypothetical Seam. Two Adapters = real Seam**. Avoid adapter systems unless useful now.
 
 ## Process
 
-### 1. Explore
+1. Read local context:
+   - `.planning/codebase/*`
+   - `.planning/PROJECT.md`, `.planning/STATE.md`
+   - `CONTEXT.md`, `CLAUDE.md`, `AGENTS.md` if present
+   - `docs/adr/*` if present
+   - relevant source files
 
-Read the project's domain glossary and any ADRs in the area you're touching first.
+2. If map missing/stale, run `map-codebase-architecture` first.
 
-Then use the Agent tool with `subagent_type=Explore` to walk the codebase. Don't follow rigid heuristics — explore organically and note where you experience friction:
+3. Find friction:
+   - shallow pass-through Modules
+   - concepts scattered across files
+   - Interface leaks Implementation details
+   - hard-to-test behavior
+   - duplicate workflows needing one deeper Module
+   - stale-project bloat blocking new direction
+   - fake seams/adapters with no current payoff
 
-- Where does understanding one concept require bouncing between many small modules?
-- Where are modules **shallow** — interface nearly as complex as the implementation?
-- Where have pure functions been extracted just for testability, but the real bugs hide in how they're called (no **locality**)?
-- Where do tightly-coupled modules leak across their seams?
-- Which parts of the codebase are untested, or hard to test through their current interface?
+4. Present 3-5 candidates max:
 
-Apply the **deletion test** to anything you suspect is shallow: would deleting it concentrate complexity, or just move it? A "yes, concentrates" is the signal you want.
+```text
+N. <candidate>
+Files: <paths>
+Problem: <friction>
+Deepening move: <Module/Interface/Seam change>
+Why: <Leverage + Locality + test impact>
+Keep/delete: <stay/move/merge/deprecate>
+Risk: <main unknown>
+```
 
-### 2. Present candidates
+5. Recommend one candidate. Then record:
 
-Present a numbered list of deepening opportunities. For each candidate:
+```text
+Direction Check: CONFIRMED | NEEDS_GRILL | BLOCKED
+Chosen direction: <one line>
+Why: <one line>
+Main risk: <one line>
+User confirmation needed: yes/no
+```
 
-- **Files** — which files/modules are involved
-- **Problem** — why the current architecture is causing friction
-- **Solution** — plain English description of what would change
-- **Benefits** — explained in terms of locality and leverage, and also in how tests would improve
+6. Run or skip grill explicitly:
 
-**Use CONTEXT.md vocabulary for the domain, and [LANGUAGE.md](LANGUAGE.md) vocabulary for the architecture.** If `CONTEXT.md` defines "Order," talk about "the Order intake module" — not "the FooBarHandler," and not "the Order service."
+```text
+Grill Gate: NEEDED_AND_RAN | NEEDED_BUT_BLOCKED | SKIPPED_NOT_NEEDED
+Reason: <one line>
+```
 
-**ADR conflicts**: if a candidate contradicts an existing ADR, only surface it when the friction is real enough to warrant revisiting the ADR. Mark it clearly (e.g. _"contradicts ADR-0007 — but worth reopening because…"_). Don't list every theoretical refactor an ADR forbids.
+7. Stop before plan unless user requested candidates + plan in one pass.
 
-Do NOT propose interfaces yet. Ask the user: "Which of these would you like to explore?"
+## Grill Gate Rule
 
-### 3. Grilling loop
+Run `grill-me` if selected candidate has unresolved decisions that change:
 
-Once the user picks a candidate, drop into a grilling conversation. Walk the design tree with them — constraints, dependencies, the shape of the deepened module, what sits behind the seam, what tests survive.
+- product/user outcome;
+- delete/merge/preserve call;
+- smallest useful Module;
+- caller Interface;
+- whether Seam is real or adapter bloat;
+- test proof;
+- first-slice scope.
 
-Side effects happen inline as decisions crystallize:
+Skip grill only when code/context answers those decisions clearly. Mark `SKIPPED_NOT_NEEDED` with reason.
 
-- **Naming a deepened module after a concept not in `CONTEXT.md`?** Add the term to `CONTEXT.md` — same discipline as `/grill-with-docs` (see [CONTEXT-FORMAT.md](../grill-with-docs/CONTEXT-FORMAT.md)). Create the file lazily if it doesn't exist.
-- **Sharpening a fuzzy term during the conversation?** Update `CONTEXT.md` right there.
-- **User rejects the candidate with a load-bearing reason?** Offer an ADR, framed as: _"Want me to record this as an ADR so future architecture reviews don't re-suggest it?"_ Only offer when the reason would actually be needed by a future explorer to avoid re-suggesting the same thing — skip ephemeral reasons ("not worth it right now") and self-evident ones. See [ADR-FORMAT.md](../grill-with-docs/ADR-FORMAT.md).
-- **Want to explore alternative interfaces for the deepened module?** See [INTERFACE-DESIGN.md](INTERFACE-DESIGN.md).
+## Pitfalls
+
+- Candidate -> plan directly. Wrong. Gate first.
+- Style nits framed as architecture. Require Leverage + Locality + test impact.
+- Adapter/plugin system too early. Keep concrete.
+- Giant `.planning/` docs. Write only next-useful artifacts.
+- Imported/reference skills treated as active. Keep separate until promoted.
+
+## Checklist
+
+- [ ] Map/context read or refreshed.
+- [ ] Candidates are real architecture friction.
+- [ ] Each candidate names files, move, payoff, risk.
+- [ ] Direction Check present.
+- [ ] Grill Gate status present.
+- [ ] No implementation plan before gates.
+- [ ] First slice small if planned.
+- [ ] `gsd-lite-check` before execution.

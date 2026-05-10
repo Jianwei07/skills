@@ -1,37 +1,81 @@
 ---
 name: jayden-workflow
-description: Top-level Jayden Workflow operating system for layered GSD-lite work. Use when choosing or orchestrating Map/New/Pivot -> Plan -> Check -> Execute -> Verify workflows across OpenCode, Claude Code, or Codex.
+description: Top-level Jayden Workflow router for manual, gated GSD-lite work. Use when choosing Map/New/Pivot -> Direction -> Plan -> Check -> explicit Execute -> Verify workflows across agents.
 ---
 
 # Jayden Workflow
 
-Objective: one personal workflow layer on top of GSD rigor and Matt architecture language.
+Objective: one lean personal workflow layer: GSD rigor + Matt architecture language + caveman token discipline.
 
 Core chain:
 
 ```text
-Map / New / Pivot -> Plan -> Check -> Execute -> Verify
+Map / New / Pivot -> Direction Check -> Plan -> Check -> STOP -> Execute only on explicit command -> Verify
 ```
 
 ## Use
 
 | Situation | Chain |
 |---|---|
-| Existing repo | `map-codebase-architecture` -> `gsd-lite-plan` -> `gsd-lite-check` -> `gsd-lite-execute` -> `gsd-lite-verify` |
-| New project | `gsd-lite-context` -> `gsd-lite-new-project` -> `gsd-lite-plan` -> `gsd-lite-check` |
-| Pivot/dead project | `map-codebase-architecture` mandatory -> `gsd-lite-pivot` -> `gsd-lite-plan` -> `gsd-lite-check` |
-| Bug | `gsd-lite-debug` -> `gsd-lite-plan` if fix needed -> `gsd-lite-check` -> `gsd-lite-execute` -> `gsd-lite-verify` |
-| Review | `gsd-lite-review` -> optional `gsd-lite-plan` for fixes |
+| Existing repo | `map-codebase-architecture` -> optional `improve-codebase-architecture` -> Direction Check -> `gsd-lite-plan` -> `gsd-lite-check` -> STOP |
+| New project | `gsd-lite-context` -> `gsd-lite-new-project` -> Direction Check -> `gsd-lite-plan` -> `gsd-lite-check` -> STOP |
+| Pivot/dead project | `map-codebase-architecture` -> `gsd-lite-pivot` -> optional `improve-codebase-architecture` -> Direction Check -> Grill Gate -> `gsd-lite-plan` -> `gsd-lite-check` -> STOP |
+| Bug | `gsd-lite-debug` -> optional `gsd-lite-plan` -> `gsd-lite-check` -> STOP |
+| Review | `gsd-lite-review` -> optional `gsd-lite-plan` for fixes -> STOP |
+| Execute approved plan | explicit user command only -> `gsd-lite-execute` -> `gsd-lite-verify` |
 
 ## Default Personal Project Loop
 
-For a stale side project, use the smallest useful chain:
+For stale side projects:
 
 ```text
-Map current repo -> Pivot direction -> Plan first slice -> Check -> Execute -> Verify
+Map current repo -> Pivot direction -> Direction Check -> Grill Gate -> Plan first slice -> Check -> STOP
 ```
 
-Do not create a giant harness in the project. Write only small project-local files:
+Then wait. Execute only after user explicitly says one of:
+
+```text
+execute current plan
+execute the checked plan
+/run execute
+/execute current plan
+```
+
+Treat `/execute` as a workflow phrase unless a real runtime command exists.
+
+## Required Gates
+
+### Direction Check
+
+After pivot/direction and before plan, state once:
+
+```text
+Direction Check: CONFIRMED | NEEDS_GRILL | BLOCKED
+Chosen direction: <one line>
+Why: <one line>
+Main risk: <one line>
+User confirmation needed: yes/no
+```
+
+### Grill Gate
+
+Before plan, state once:
+
+```text
+Grill Gate: NEEDED_AND_RAN | NEEDED_BUT_BLOCKED | SKIPPED_NOT_NEEDED
+Reason: <one line>
+```
+
+Rules:
+
+- If ambiguity changes direction, Interface, keep/delete call, first-slice scope, irreversible action, or acceptance criteria -> run `grill-me` before plan.
+- If ambiguity only affects later execution -> record in `.planning/current/QUESTIONS.md`; planning may continue.
+- If no material ambiguity -> mark `SKIPPED_NOT_NEEDED` with reason.
+- Do not repeat gate text in every section.
+
+## Project Artifacts
+
+Do not create a giant harness in project repos. Write only small project-local files needed now:
 
 - `.planning/PROJECT.md`
 - `.planning/STATE.md`
@@ -39,6 +83,7 @@ Do not create a giant harness in the project. Write only small project-local fil
 - `.planning/current/PLAN.md`
 - `.planning/current/TODO.md`
 - `.planning/current/HANDOFF.md`
+- `.planning/current/QUESTIONS.md` only when unresolved execution questions exist
 
 Everything else is on-demand.
 
@@ -51,11 +96,15 @@ Everything else is on-demand.
 
 ## Rules
 
+- Manual gated workflow. Plan/check never implies execute.
+- Execute only after explicit user command.
+- Caveman is core purpose: cut token usage by default. Terse, structured, no filler.
 - Skills define behavior. Commands route. Agents execute focused roles.
 - Use project-local `.planning/`; never global project state.
-- Create the fewest planning artifacts needed for the next action.
-- Keep `SKILL.md` executable; move deeper supporting detail to sibling `.md` files.
-- Use `grill-me` when product intent, interface shape, keep/delete boundary, irreversible action, or acceptance criteria is unclear.
+- Create the fewest planning artifacts needed for next action.
+- Keep `SKILL.md` executable; move deeper detail to sibling `.md` only when needed.
+- Avoid repeated skills. If two skills overlap, keep lean canonical one; move reference/old versions to `imported/` or `deprecated/`.
+- For architecture/refactor/debloat work, use `improve-codebase-architecture` before planning.
 - Use Matt terms: Module, Interface, Implementation, Seam, Adapter, Depth, Leverage, Locality.
-- Structured terse caveman by default; clear prose for security, irreversible action, or ambiguity.
+- Clear prose only for security, irreversible action, or ambiguity.
 - Do not edit Matt skill files.
