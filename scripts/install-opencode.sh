@@ -37,9 +37,9 @@ fi
 
 echo "Linking skills for OpenCode via ~/.agents/skills..."
 find \
-  "$REPO/skills/engineering" \
-  "$REPO/skills/jayden-workflow" \
-  "$REPO/skills/productivity" \
+  "$REPO/skills/core" \
+  "$REPO/skills/project" \
+  "$REPO/skills/misc" \
   -name SKILL.md \
   -not -path '*/node_modules/*' \
   -print0 |

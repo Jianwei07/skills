@@ -8,7 +8,7 @@ This folder is Jayden's curated OpenCode layer on top of the skill library.
 - `opencode/agents/` contains small custom agents only when a role boundary is worth the prompt cost.
 - `opencode/opencode.json` is the lean global OpenCode config to sync into `~/.config/opencode/opencode.json`.
 - `skills/` remains the source of truth for reusable skill instructions.
-- `skills/jayden-workflow/` contains Jayden-owned GSD-lite and caveman extensions.
+- `skills/core/` and `skills/project/` contain the active Jayden workflow skills.
 
 ## Install
 

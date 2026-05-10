@@ -164,42 +164,44 @@ Before importing any GSD agent:
 ## Suggested Personal GSD-Lite Layout
 
 ```text
-skills/jayden-workflow/
-  jayden-workflow/
-    SKILL.md
-    META-PROMPTING.md
-    ARTIFACTS.md
-    DECISION-GATES.md
-    ARCHITECTURE-LANGUAGE.md
-  gsd-lite-context/
-    SKILL.md
-  gsd-lite-plan/
-    SKILL.md
-    PLAN-CONTRACT.md
-  gsd-lite-check/
-    SKILL.md
-    CHECK-CONTRACT.md
-  gsd-lite-execute/
-    SKILL.md
-    EXECUTE-CONTRACT.md
-  gsd-lite-new-project/
-    SKILL.md
-    NEW-PROJECT-CONTRACT.md
-  gsd-lite-pivot/
-    SKILL.md
-    PIVOT-CONTRACT.md
-  map-codebase-architecture/
-    SKILL.md
-    MAP-CONTRACT.md
-  gsd-lite-verify/
-    SKILL.md
-    VERIFY-CONTRACT.md
-  gsd-lite-review/
-    SKILL.md
-    REVIEW-CONTRACT.md
-  gsd-lite-debug/
-    SKILL.md
-    DEBUG-CONTRACT.md
+skills/
+  core/
+    jayden-workflow/
+      SKILL.md
+      META-PROMPTING.md
+      ARTIFACTS.md
+      DECISION-GATES.md
+      ARCHITECTURE-LANGUAGE.md
+  project/
+    gsd-lite-context/
+      SKILL.md
+    gsd-lite-plan/
+      SKILL.md
+      PLAN-CONTRACT.md
+    gsd-lite-check/
+      SKILL.md
+      CHECK-CONTRACT.md
+    gsd-lite-execute/
+      SKILL.md
+      EXECUTE-CONTRACT.md
+    gsd-lite-new-project/
+      SKILL.md
+      NEW-PROJECT-CONTRACT.md
+    gsd-lite-pivot/
+      SKILL.md
+      PIVOT-CONTRACT.md
+    map-codebase-architecture/
+      SKILL.md
+      MAP-CONTRACT.md
+    gsd-lite-verify/
+      SKILL.md
+      VERIFY-CONTRACT.md
+    gsd-lite-review/
+      SKILL.md
+      REVIEW-CONTRACT.md
+    gsd-lite-debug/
+      SKILL.md
+      DEBUG-CONTRACT.md
 
 opencode/command/
   gsd-map.md

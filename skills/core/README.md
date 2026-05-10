@@ -1,0 +1,12 @@
+# Core skills
+
+Real reusable operating principles and workflows I want agents to follow by default.
+
+- [caveman](./caveman/SKILL.md) — Ultra-compressed communication mode. Cuts token usage ~75% by dropping filler, articles, and pleasantries while keeping full technical accuracy. Use when user says "caveman mode", "talk like caveman", "use caveman", "less tokens", "be brief", or invokes /caveman.
+- [caveman-commit](./caveman-commit/SKILL.md) — Ultra-compressed commit message generator. Cuts noise from commit messages while preserving intent and reasoning. Conventional Commits format. Subject ≤50 chars, body only when "why" isn't obvious. Use when user says "write a commit", "commit message", "generate commit", "/commit", or invokes /caveman-commit. Auto-triggers when staging changes.
+- [caveman-compress](./caveman-compress/SKILL.md) — Compress natural language memory files (CLAUDE.md, todos, preferences) into caveman format to save input tokens. Preserves all technical substance, code, URLs, and structure. Compressed version overwrites the original file. Human-readable backup saved as FILE.original.md. Trigger: /caveman:compress <filepath> or "compress memory file"
+- [caveman-help](./caveman-help/SKILL.md) — Quick-reference card for all caveman modes, skills, and commands. One-shot display, not a persistent mode. Trigger: /caveman-help, "caveman help", "what caveman commands", "how do I use caveman".
+- [caveman-review](./caveman-review/SKILL.md) — Ultra-compressed code review comments. Cuts noise from PR feedback while preserving the actionable signal. Each comment is one line: location, problem, fix. Use when user says "review this PR", "code review", "review the diff", "/review", or invokes /caveman-review. Auto-triggers when reviewing pull requests.
+- [grill-me](./grill-me/SKILL.md) — Interview the user relentlessly about a plan or design until reaching shared understanding, resolving each branch of the decision tree. Use when user wants to stress-test a plan, get grilled on their design, or mentions "grill me".
+- [jayden-workflow](./jayden-workflow/SKILL.md) — Top-level Jayden Workflow operating system for layered GSD-lite work. Use when choosing or orchestrating Map/New/Pivot -> Plan -> Check -> Execute -> Verify workflows across OpenCode, Claude Code, or Codex.
+- [write-a-skill](./write-a-skill/SKILL.md) — Create new agent skills with proper structure, progressive disclosure, and bundled resources. Use when user wants to create, write, or build a new skill.
