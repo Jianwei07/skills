@@ -13,9 +13,9 @@ Upstream:
 - `grill-me` for keep/delete and product direction decisions.
 
 Read:
-- `../jayden-workflow/META-PROMPTING.md`
-- `../jayden-workflow/ARCHITECTURE-LANGUAGE.md`
-- `../jayden-workflow/DECISION-GATES.md`
+- `../../core/jayden-workflow/META-PROMPTING.md`
+- `../../core/jayden-workflow/ARCHITECTURE-LANGUAGE.md`
+- `../../core/jayden-workflow/DECISION-GATES.md`
 - Pivot contract: [PIVOT-CONTRACT.md](PIVOT-CONTRACT.md)
 
 ## Chain

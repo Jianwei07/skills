@@ -12,8 +12,8 @@ Upstream:
 - Jayden central-current artifact model.
 
 Read:
-- Meta-prompt loop: `../jayden-workflow/META-PROMPTING.md`
-- Decision gates: `../jayden-workflow/DECISION-GATES.md`
+- Meta-prompt loop: `../../core/jayden-workflow/META-PROMPTING.md`
+- Decision gates: `../../core/jayden-workflow/DECISION-GATES.md`
 - Check contract: [CHECK-CONTRACT.md](CHECK-CONTRACT.md)
 
 ## Chain

@@ -26,8 +26,8 @@ Write 7 docs to `.planning/codebase/`:
 | `concerns` | `CONCERNS.md` |
 
 Full contract: [MAP-CONTRACT.md](MAP-CONTRACT.md).
-Shared architecture terms: `../jayden-workflow/ARCHITECTURE-LANGUAGE.md`.
-Shared gates: `../jayden-workflow/DECISION-GATES.md`.
+Shared architecture terms: `../../core/jayden-workflow/ARCHITECTURE-LANGUAGE.md`.
+Shared gates: `../../core/jayden-workflow/DECISION-GATES.md`.
 
 ## Process
 

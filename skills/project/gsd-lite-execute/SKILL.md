@@ -13,9 +13,9 @@ Upstream:
 - Matt seam/interface stop rules.
 
 Read:
-- Artifacts: `../jayden-workflow/ARTIFACTS.md`
-- Decision gates: `../jayden-workflow/DECISION-GATES.md`
-- Architecture terms: `../jayden-workflow/ARCHITECTURE-LANGUAGE.md`
+- Artifacts: `../../core/jayden-workflow/ARTIFACTS.md`
+- Decision gates: `../../core/jayden-workflow/DECISION-GATES.md`
+- Architecture terms: `../../core/jayden-workflow/ARCHITECTURE-LANGUAGE.md`
 - Execute contract: [EXECUTE-CONTRACT.md](EXECUTE-CONTRACT.md)
 
 ## Chain

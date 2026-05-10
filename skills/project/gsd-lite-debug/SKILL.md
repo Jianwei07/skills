@@ -13,8 +13,8 @@ Upstream:
 - Jayden central context.
 
 Read:
-- `../jayden-workflow/ARTIFACTS.md`
-- `../jayden-workflow/DECISION-GATES.md`
+- `../../core/jayden-workflow/ARTIFACTS.md`
+- `../../core/jayden-workflow/DECISION-GATES.md`
 - Debug contract: [DEBUG-CONTRACT.md](DEBUG-CONTRACT.md)
 
 ## Chain

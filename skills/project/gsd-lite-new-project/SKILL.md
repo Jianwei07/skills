@@ -13,9 +13,9 @@ Upstream:
 - `grill-me` for missing product decisions.
 
 Read:
-- `../jayden-workflow/META-PROMPTING.md`
-- `../jayden-workflow/ARTIFACTS.md`
-- `../jayden-workflow/DECISION-GATES.md`
+- `../../core/jayden-workflow/META-PROMPTING.md`
+- `../../core/jayden-workflow/ARTIFACTS.md`
+- `../../core/jayden-workflow/DECISION-GATES.md`
 - New-project contract: [NEW-PROJECT-CONTRACT.md](NEW-PROJECT-CONTRACT.md)
 
 ## Chain

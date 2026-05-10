@@ -13,8 +13,8 @@ Upstream:
 - Jayden central context.
 
 Read:
-- `../jayden-workflow/ARCHITECTURE-LANGUAGE.md`
-- `../jayden-workflow/ARTIFACTS.md`
+- `../../core/jayden-workflow/ARCHITECTURE-LANGUAGE.md`
+- `../../core/jayden-workflow/ARTIFACTS.md`
 - Review contract: [REVIEW-CONTRACT.md](REVIEW-CONTRACT.md)
 
 ## Chain

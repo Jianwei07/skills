@@ -23,6 +23,25 @@ Map / New / Pivot -> Plan -> Check -> Execute -> Verify
 | Bug | `gsd-lite-debug` -> `gsd-lite-plan` if fix needed -> `gsd-lite-check` -> `gsd-lite-execute` -> `gsd-lite-verify` |
 | Review | `gsd-lite-review` -> optional `gsd-lite-plan` for fixes |
 
+## Default Personal Project Loop
+
+For a stale side project, use the smallest useful chain:
+
+```text
+Map current repo -> Pivot direction -> Plan first slice -> Check -> Execute -> Verify
+```
+
+Do not create a giant harness in the project. Write only small project-local files:
+
+- `.planning/PROJECT.md`
+- `.planning/STATE.md`
+- `.planning/codebase/*` when mapping is needed
+- `.planning/current/PLAN.md`
+- `.planning/current/TODO.md`
+- `.planning/current/HANDOFF.md`
+
+Everything else is on-demand.
+
 ## Support Docs
 
 - Meta-prompt loop: [META-PROMPTING.md](META-PROMPTING.md)
@@ -34,6 +53,7 @@ Map / New / Pivot -> Plan -> Check -> Execute -> Verify
 
 - Skills define behavior. Commands route. Agents execute focused roles.
 - Use project-local `.planning/`; never global project state.
+- Create the fewest planning artifacts needed for the next action.
 - Keep `SKILL.md` executable; move deeper supporting detail to sibling `.md` files.
 - Use `grill-me` when product intent, interface shape, keep/delete boundary, irreversible action, or acceptance criteria is unclear.
 - Use Matt terms: Module, Interface, Implementation, Seam, Adapter, Depth, Leverage, Locality.

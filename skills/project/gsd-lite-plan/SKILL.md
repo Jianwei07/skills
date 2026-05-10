@@ -13,9 +13,9 @@ Upstream:
 - Jayden `.planning/current/*` artifact model.
 
 Read:
-- Meta-prompt loop: `../jayden-workflow/META-PROMPTING.md`
-- Architecture terms: `../jayden-workflow/ARCHITECTURE-LANGUAGE.md`
-- Artifacts: `../jayden-workflow/ARTIFACTS.md`
+- Meta-prompt loop: `../../core/jayden-workflow/META-PROMPTING.md`
+- Architecture terms: `../../core/jayden-workflow/ARCHITECTURE-LANGUAGE.md`
+- Artifacts: `../../core/jayden-workflow/ARTIFACTS.md`
 - Plan contract: [PLAN-CONTRACT.md](PLAN-CONTRACT.md)
 
 ## Chain

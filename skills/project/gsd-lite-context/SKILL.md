@@ -12,17 +12,28 @@ Upstream:
 - Jayden central-current artifact model.
 
 Read:
-- Jayden artifacts: `../jayden-workflow/ARTIFACTS.md`
-- Decision gates: `../jayden-workflow/DECISION-GATES.md`
+- Jayden artifacts: `../../core/jayden-workflow/ARTIFACTS.md`
+- Decision gates: `../../core/jayden-workflow/DECISION-GATES.md`
 
 ## Contract
 
-Core:
+Minimum:
 
 ```text
 .planning/
-  codebase/
   current/
+    PLAN.md
+    TODO.md
+    HANDOFF.md
+  codebase/
+  PROJECT.md
+  STATE.md
+```
+
+Optional, create only when used:
+
+```text
+.planning/
   pivot/
   debug/
   review/
@@ -36,6 +47,7 @@ Active work lives in `.planning/current/*`.
 ## Rules
 
 - Project-local only. No global state.
+- Do not create empty folders or unused planning docs.
 - Store facts, decisions, commands, evidence.
 - Do not store transcript.
 - Exact paths beat prose.

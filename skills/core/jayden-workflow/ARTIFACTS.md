@@ -2,6 +2,18 @@
 
 All artifacts are project-local under `.planning/`.
 
+Create only what the current workflow needs. Empty directories and ceremonial docs are bloat.
+
+## Minimum Useful Set
+
+| Path | Purpose |
+|---|---|
+| `.planning/PROJECT.md` | project identity, core value, constraints, key decisions |
+| `.planning/STATE.md` | current position and next action |
+| `.planning/current/PLAN.md` | decision-complete executable plan |
+| `.planning/current/TODO.md` | local execution checklist |
+| `.planning/current/HANDOFF.md` | compact latest state |
+
 ## Core
 
 | Path | Purpose |
@@ -34,7 +46,9 @@ All artifacts are project-local under `.planning/`.
 - `.planning/codebase/TESTING.md`
 - `.planning/codebase/CONCERNS.md`
 
-## Area State
+## Optional Area State
+
+Create these only when the matching workflow needs them.
 
 | Path | Purpose |
 |---|---|
@@ -49,5 +63,5 @@ All artifacts are project-local under `.planning/`.
 
 - Store facts, not transcript.
 - Exact paths and commands beat prose.
-- Do not create phase directories unless a future workflow explicitly asks.
+- Do not create empty directories or phase directories unless a workflow explicitly asks.
 - Do not store secrets.

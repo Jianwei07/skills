@@ -12,7 +12,7 @@ Upstream:
 - Jayden central context.
 
 Read:
-- `../jayden-workflow/ARTIFACTS.md`
+- `../../core/jayden-workflow/ARTIFACTS.md`
 - Verification contract: [VERIFY-CONTRACT.md](VERIFY-CONTRACT.md)
 
 ## Chain
