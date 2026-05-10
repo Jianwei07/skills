@@ -46,6 +46,8 @@ Do not use `Next: execute current plan` or recommend execution commands. PASS me
 
 ## Rules
 
+- If the upstream output came from broad discovery without a user-selected direction/slice, return `NEEDS CLARITY`, not `PASS`.
+- Do not check a full implementation plan that should have stopped at Pass 1; ask for direction selection instead.
 - Check goal achievement, not formatting.
 - Check direction is confirmed or knowingly provisional.
 - Check grill gate status exists.

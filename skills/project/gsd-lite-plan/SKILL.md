@@ -24,6 +24,8 @@ Read:
 Direction Check -> Grill Gate -> gsd-lite-plan -> gsd-lite-check -> STOP
 ```
 
+Budget gate: do not enter `gsd-lite-plan` during broad discovery. Planning starts only after one direction/slice is selected by the user or clearly established by existing docs.
+
 Architecture/refactor/debloat chain:
 
 ```text
@@ -77,6 +79,8 @@ Next: approve plan | revise plan | grill this decision | stop
 ## Rules
 
 - Plans are prompts. Executor should not guess.
+- Do not create a plan from broad discovery alone. First ask for/select one direction or slice.
+- Keep plan artifacts lean: only files, actions, verification, done criteria needed for the selected slice.
 - Use goal-backward must-haves.
 - Use exact files, actions, verification, done criteria.
 - Use Module/Interface/Seam/Depth language for architecture choices.

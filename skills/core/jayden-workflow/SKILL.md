@@ -26,11 +26,14 @@ Map / New / Pivot -> Direction Check -> Plan -> Check -> STOP -> Execute only on
 
 ## Default Personal Project Loop
 
-For stale side projects:
+For stale side projects, default to a two-pass budgeted flow:
 
 ```text
-Map current repo -> Pivot direction -> Direction Check -> Grill Gate -> Plan first slice -> Check -> STOP
+Pass 1: inventory + direction candidates + Grill Gate -> STOP
+Pass 2, after user picks direction: Plan first slice -> Check -> STOP
 ```
+
+Do not run the full Map -> Pivot -> Plan -> Check chain in one long pass unless the user explicitly asks for full planning.
 
 Then wait. Execute only after user explicitly says one of:
 
@@ -112,6 +115,9 @@ Everything else is on-demand.
 
 ## Rules
 
+- Budget first. If the user asks broad work like "improve this", "revive this", "plan this", or "use jayden-workflow", run only Pass 1 unless they explicitly ask for full planning.
+- Pass 1 output max: branch/status, 3-5 findings, 2-4 direction choices, gate status, one next question/action. No full plan.
+- Full plan requires either an explicit direction from the user or prior docs that clearly choose it.
 - Manual gated workflow. Plan/check never implies execute.
 - Execute only after explicit user command.
 - Quality gates are mandatory for code changes: discover FE/BE lint, format:check, typecheck, and test commands; run applicable checks before commit; record results in `.planning/current/VERIFY.md`.
