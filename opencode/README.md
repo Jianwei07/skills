@@ -38,7 +38,7 @@ Do not create one agent per GSD step. Steps are sequential workflow state, not s
 /gsd-debug         debug loop
 ```
 
-Other commands are aliases/helpers (`/caveman`, `/grill-me`, `/tdd`, etc.). Keep them thin or remove.
+Other commands are aliases/helpers (`/caveman`, `/grill-me`, `/grill`, `/tdd`, etc.). Keep them thin or remove. `/grill-me` is plain no-file grilling; `/grill` is the docs-aware `grill-with-docs` flow.
 
 ## Install
 

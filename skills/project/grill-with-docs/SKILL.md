@@ -5,11 +5,18 @@ description: Grilling session that challenges your plan against the existing dom
 
 <what-to-do>
 
-Interview me relentlessly about every aspect of this plan until we reach a shared understanding. Walk down each branch of the design tree, resolving dependencies between decisions one-by-one. For each question, provide your recommended answer.
+Use `grill-me` interaction rules, then add docs awareness.
 
-Ask the questions one at a time, waiting for feedback on each question before continuing.
+Interview me about the plan until we reach shared understanding. Walk down the decision tree one branch at a time.
 
-If a question can be answered by exploring the codebase, explore the codebase instead.
+For each blocking question:
+
+- inspect first; if code/docs can answer it, do that instead of asking
+- ask exactly one question at a time
+- provide 2-4 concrete options plus a custom/other path
+- in Hermes, call `clarify` with choices when available
+- in OpenCode / Claude Code / Codex / plain CLI, print numbered options and allow a custom answer
+- wait for feedback before continuing
 
 </what-to-do>
 

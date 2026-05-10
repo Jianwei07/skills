@@ -6,7 +6,7 @@ argument-hint: "[plan or idea]"
 
 Use the `grill-me` skill for this task.
 
-Interview me until the decision tree is clear enough to act on. Do not edit files unless I explicitly ask.
+Ask one blocking question at a time. Offer 2-4 numbered choices plus custom answer. In Hermes, use the clarify tool when available; in OpenCode, print the choices. Do not edit files unless I explicitly ask.
 
 Topic:
 $ARGUMENTS

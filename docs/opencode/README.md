@@ -42,29 +42,29 @@ Skills should hold the workflow. Commands should make the workflow easy to call.
 |---|---|---|---|---|
 | Skills | Reusable workflow source of truth. | Portable across OpenCode, Claude Code, and Codex; easy to version; best for principles/process/examples. | Long skills can add token cost. | Put real workflow in `SKILL.md`; move deeper detail to sibling `.md` files. |
 | Commands | Thin slash-command entrypoints. | Fast UX, easy aliases, good routing. | OpenCode-specific; drifts if it contains behavior. | Command says "use this skill with these args". |
-| Agents | Focused executor persona. | Good for mapping, planning, review, debug, verify isolation. | Extra prompt overhead; too many agents can lag or duplicate behavior. | Agents execute roles; skills define workflow. |
+| Agents | Focused role persona. | Good for planning, build, review, debug isolation. | Extra prompt overhead; too many agents can lag or duplicate behavior. | Only four roles: planner, builder, reviewer, debugger. |
 
 ## Current Command Set
 
 - `/diagnose` -> `diagnose`
 - `/tdd` -> `tdd`
-- `/grill` -> `grill-with-docs`
-- `/grill-me` -> `grill-me`
+- `/grill` -> `grill-with-docs` (docs-aware/original grill flow)
+- `/grill-me` -> `grill-me` (plain no-file grill; one choice question at a time)
 - `/zoom-out` -> `zoom-out`
 - `/refactor` -> `improve-codebase-architecture`
 - `/to-prd` -> `to-prd`
 - `/to-issues` -> `to-issues`
 - `/caveman` -> `caveman`
 - `/jayden-workflow` -> `jayden-workflow`, routing Map/New/Pivot -> Plan -> Check -> Execute -> Verify
-- `/verify` -> `gsd-lite-verify` via `gsd-lite-verifier`
-- `/review` -> `gsd-lite-review` via `gsd-lite-reviewer`
-- `/gsd-map` -> `map-codebase-architecture` via `gsd-lite-mapper`
-- `/gsd-new-project` -> `gsd-lite-new-project` via `gsd-lite-project-starter`
-- `/gsd-pivot` -> `gsd-lite-pivot` via `gsd-lite-pivot-planner`
-- `/gsd-plan` -> `gsd-lite-plan` via `gsd-lite-planner`, writing `.planning/current/PLAN.md` and `TODO.md`
-- `/gsd-check` -> `gsd-lite-check` via `gsd-lite-checker`, validating plan completeness before execution
-- `/gsd-execute` -> `gsd-lite-execute` via `gsd-lite-executor`, following `.planning/current/*` and map conventions
-- `/gsd-debug` -> `gsd-lite-debug` via `gsd-lite-debugger`
+- `/verify` -> `gsd-lite-verify` via `jayden-reviewer`
+- `/review` -> `gsd-lite-review` via `jayden-reviewer`
+- `/gsd-map` -> `map-codebase-architecture` via `jayden-planner`
+- `/gsd-new-project` -> `gsd-lite-new-project` via `jayden-planner`
+- `/gsd-pivot` -> `gsd-lite-pivot` via `jayden-planner`
+- `/gsd-plan` -> `gsd-lite-plan` via `jayden-planner`, writing `.planning/current/PLAN.md` and `TODO.md`
+- `/gsd-check` -> `gsd-lite-check` via `jayden-planner`, validating plan completeness before execution
+- `/gsd-execute` -> `gsd-lite-execute` via `jayden-builder`, following `.planning/current/*` and map conventions
+- `/gsd-debug` -> `gsd-lite-debug` via `jayden-debugger`
 - `/caveman-commit` -> `caveman-commit`
 - `/caveman-review` -> `caveman-review`
 - `/caveman-compress` -> `caveman-compress`

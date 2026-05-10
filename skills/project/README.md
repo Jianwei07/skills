@@ -3,7 +3,7 @@
 Project execution, planning, debugging, reviewing, and shipping workflows.
 
 - [diagnose](./diagnose/SKILL.md) — Disciplined diagnosis loop for hard bugs and performance regressions. Reproduce → minimise → hypothesise → instrument → fix → regression-test. Use when user says "diagnose this" / "debug this", reports a bug, says something is broken/throwing/failing, or describes a performance regression.
-- [grill-with-docs](./grill-with-docs/SKILL.md) — Grilling session that challenges your plan against the existing domain model, sharpens terminology, and updates documentation (CONTEXT.md, ADRs) inline as decisions crystallise. Use when user wants to stress-test a plan against their project's language and documented decisions.
+- [grill-with-docs](./grill-with-docs/SKILL.md) — Docs-aware/original grill flow. Challenges a plan against the domain model, asks one blocking choice question at a time, sharpens terminology, and updates CONTEXT/ADR docs only when useful.
 - [gsd-lite-check](./gsd-lite-check/SKILL.md) — Pre-execution gate for Jayden Workflow plans. Verifies direction, grill status, plan sufficiency, quality gates, and keeps execution closed until user explicitly commands it.
 - [gsd-lite-context](./gsd-lite-context/SKILL.md) — Defines project-local `.planning/` as Jayden Workflow's central context spine. Use before planning, checking, executing, verifying, debugging, reviewing, pivoting, or starting new project work.
 - [gsd-lite-debug](./gsd-lite-debug/SKILL.md) — Persistent Jayden Workflow debugging wrapper around Matt's diagnose loop. Use when a bug needs root-cause investigation, evidence, and cross-turn state.
