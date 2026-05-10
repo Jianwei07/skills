@@ -59,17 +59,16 @@ Use cheap/fast default, escalate only on explicit need.
 
 Avoid making `xhigh` global. It turns every typo fix into a premium reasoning job.
 
-### 2. Lazy References
+### 2. Lazy Sibling Docs
 
 Pattern:
 
 ```text
 skill-name/
   SKILL.md              # trigger + 5-8 step workflow
-  references/
-    output-contract.md  # load only when producing final artifact
-    examples.md         # load only when user asks or output weak
-    checks.md           # load only before verification
+  OUTPUT-CONTRACT.md    # load only when producing final artifact
+  EXAMPLES.md           # load only when user asks or output weak
+  CHECKS.md             # load only before verification
 ```
 
 Most turns need the workflow, not every example.
@@ -159,29 +158,48 @@ Before importing any GSD agent:
 2. Extract objective, inputs, outputs, invariants.
 3. Delete examples unless they prevent known failure.
 4. Convert prose to checklist/table.
-5. Move rare policy to `references/`.
+5. Move rare policy to sibling `.md` files.
 6. Target 70-90% reduction.
 
 ## Suggested Personal GSD-Lite Layout
 
 ```text
 skills/jayden-workflow/
-  gsd-lite-context/
+  jayden-workflow/
     SKILL.md
-  map-codebase-architecture/
+    META-PROMPTING.md
+    ARTIFACTS.md
+    DECISION-GATES.md
+    ARCHITECTURE-LANGUAGE.md
+  gsd-lite-context/
     SKILL.md
   gsd-lite-plan/
     SKILL.md
-    references/plan-contract.md
+    PLAN-CONTRACT.md
+  gsd-lite-check/
+    SKILL.md
+    CHECK-CONTRACT.md
   gsd-lite-execute/
     SKILL.md
+    EXECUTE-CONTRACT.md
+  gsd-lite-new-project/
+    SKILL.md
+    NEW-PROJECT-CONTRACT.md
+  gsd-lite-pivot/
+    SKILL.md
+    PIVOT-CONTRACT.md
+  map-codebase-architecture/
+    SKILL.md
+    MAP-CONTRACT.md
   gsd-lite-verify/
     SKILL.md
-    references/verification-rubric.md
+    VERIFY-CONTRACT.md
   gsd-lite-review/
     SKILL.md
+    REVIEW-CONTRACT.md
   gsd-lite-debug/
     SKILL.md
+    DEBUG-CONTRACT.md
 
 opencode/command/
   gsd-map.md

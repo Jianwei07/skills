@@ -6,7 +6,20 @@ It intentionally stays small:
 
 - `command/` contains thin slash-command wrappers.
 - `opencode.json` keeps OpenCode lean and skill-first.
-- `agents/` is reserved for custom agents, but should stay empty unless an agent earns its keep.
+- `agents/` contains small Jayden Workflow agents when a role boundary earns its prompt cost.
 - `skills/` is reserved for OpenCode-only skills that should not live in the shared `skills/` tree.
 
-Run `../scripts/install-opencode.sh` from this repo to sync the kit into your global OpenCode config.
+Install/sync strategy is still undecided. Use `../scripts/install-opencode.sh` only with temp env vars unless you intentionally want to update live OpenCode config.
+
+Key Jayden Workflow commands:
+
+```text
+/jayden-workflow
+/gsd-new-project
+/gsd-pivot
+/gsd-map
+/gsd-plan
+/gsd-check
+/gsd-execute
+/verify
+```

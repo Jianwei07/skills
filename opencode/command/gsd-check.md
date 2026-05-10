@@ -4,12 +4,9 @@ agent: gsd-lite-checker
 argument-hint: "[plan file or pasted plan]"
 ---
 
-Use `gsd-lite-checker`.
+Use `gsd-lite-check`.
 
-Validate Plan -> Check -> Execute -> Verify gate. Read `.planning/current/*` when present. Block only for missing decisions, unsafe scope reduction, or no verification path.
-
-Style: structured terse caveman.
+Pass plan/scope through. Validate before execution and write compact gate result when project state exists.
 
 Plan:
 $ARGUMENTS
-

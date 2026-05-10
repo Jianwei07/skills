@@ -1,58 +1,43 @@
 ---
 name: gsd-lite-context
-description: Defines project-local `.planning/` as the central GSD-lite context spine. Use when planning, checking, executing, verifying, debugging, reviewing, researching, linting, or preparing PR work for a feature or bug fix.
+description: Defines project-local `.planning/` as Jayden Workflow's central context spine. Use before planning, checking, executing, verifying, debugging, reviewing, pivoting, or starting new project work.
 ---
 
 # GSD-Lite Context
 
-Objective: one project-local context spine. Agents read/write compact state instead of rebuilding context.
+Objective: one project-local source of truth for agent handoff.
 
-`.planning/` belongs to the target project. Never use global home dirs for project state.
+Upstream:
+- GSD persistent `.planning/` memory.
+- Jayden central-current artifact model.
+
+Read:
+- Jayden artifacts: `../jayden-workflow/ARTIFACTS.md`
+- Decision gates: `../jayden-workflow/DECISION-GATES.md`
 
 ## Contract
 
+Core:
+
 ```text
 .planning/
-  codebase/        # `/gsd-map` output
-  current/         # active feature/bugfix context
-  debug/           # optional debug sessions
-  research/        # optional research summaries
-  review/          # optional review summaries
-  lint/            # optional lint/format summaries
-  pr/              # optional PR prep/cleanup summaries
+  codebase/
+  current/
+  pivot/
+  debug/
+  review/
+  research/
+  lint/
+  pr/
 ```
 
-## Current Context
-
-Create/update `.planning/current/` for feature/bugfix work:
-
-| File | Purpose |
-|---|---|
-| `PLAN.md` | decision-complete plan |
-| `TODO.md` | local execution checklist |
-| `DECISIONS.md` | accepted decisions, one line each |
-| `QUESTIONS.md` | unresolved blockers/questions |
-| `HANDOFF.md` | compact latest state for next agent |
-| `VERIFY.md` | latest goal-backward verification summary |
-
-## Workflow
-
-Default: Plan -> Check -> Execute -> Verify.
-
-- Plan: write `PLAN.md` + `TODO.md`.
-- Check: validate plan completeness before execution.
-- Execute: work from `TODO.md`, update progress + `HANDOFF.md`.
-- Verify: compare result to must-haves, write `VERIFY.md`.
-
-Tiny tasks may use `TODO.md` directly. If work spans turns, update `HANDOFF.md`.
+Active work lives in `.planning/current/*`.
 
 ## Rules
 
-- Store facts, not transcript.
-- Use exact paths, commands, evidence.
-- Keep summaries compact.
-- Detailed agent state goes in `.planning/<area>/`.
-- Decoupled agents read `.planning/current/*` and write summary back.
-- Do not edit Matt skill files.
-- Structured terse caveman by default; use clear prose for security/irreversible ambiguity.
-
+- Project-local only. No global state.
+- Store facts, decisions, commands, evidence.
+- Do not store transcript.
+- Exact paths beat prose.
+- Use `DECISIONS.md`, `QUESTIONS.md`, `HANDOFF.md` to avoid context rebuild.
+- Structured terse caveman by default; clear prose for security/irreversible ambiguity.

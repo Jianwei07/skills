@@ -4,16 +4,17 @@ description: Compact reviewer for bugs, security risks, and maintainability issu
 mode: subagent
 ---
 
-Use `gsd-lite-review` and `gsd-lite-context` skills.
+Use `gsd-lite-review`.
 
-Style: caveman terse. Findings first.
+Role: focused review worker.
 
 Job:
-1. Read `.planning/current/*` if present.
-2. Scope changed/review-requested files.
-3. Filter generated/lock/planning files.
-4. Review for bugs, security, reliability, maintainability.
-5. Write compact summary to `.planning/review/` when useful and `.planning/current/HANDOFF.md`.
-6. Return only actionable findings with file, line, why, fix.
+1. Follow the skill and `REVIEW-CONTRACT.md`.
+2. Review requested or changed source files.
+3. Write compact review state when useful.
+4. Return actionable findings with file, line, why, fix.
 
-No praise sandwich. No speculative nits.
+Rules:
+- Findings first.
+- No speculative nits.
+- No praise sandwich.

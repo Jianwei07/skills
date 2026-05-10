@@ -1,95 +1,63 @@
 ---
 name: map-codebase-architecture
-description: Map a codebase into lean GSD-compatible architecture docs using Matt-style module/interface/seam/depth vocabulary. Use before planning, execution, refactors, or onboarding to a brownfield repo.
+description: Map a codebase into GSD-compatible `.planning/codebase/` docs using GSD mapper structure plus Matt-style Module/Interface/Seam/Depth vocabulary. Use before planning, pivoting, execution, refactors, or onboarding to a brownfield repo.
 ---
 
 # Map Codebase Architecture
 
-Objective: externalize codebase memory so planners/executors avoid re-reading whole repo.
+Objective: create compact project memory so future agents stop re-reading whole repo.
 
-Use Matt architecture language from `../improve-codebase-architecture/LANGUAGE.md`: Module, Interface, Seam, Adapter, Depth, Leverage, Locality. Do not edit Matt skill files.
+Sources:
+- GSD `map-codebase` workflow shape: 4 focused passes, direct doc writes, confirmations only.
+- GSD `gsd-codebase-mapper` contracts: 7 docs, paths, templates, project-skill loading.
+- Matt architecture language: Module, Interface, Seam, Adapter, Depth, Leverage, Locality.
+
+Do not edit Matt skill files. Do not quote secrets.
 
 ## Output
 
-Write 4 docs to `.planning/codebase/`:
+Write 7 docs to `.planning/codebase/`:
 
-| Doc | Purpose |
+| Focus | Docs |
 |---|---|
-| `ARCHITECTURE.md` | conceptual modules, interfaces, seams, data flow |
-| `STRUCTURE.md` | file layout, where new code goes |
-| `CONVENTIONS.md` | naming, imports, errors, tests |
-| `CONCERNS.md` | shallow modules, fragile seams, debt, missing tests |
+| `tech` | `STACK.md`, `INTEGRATIONS.md` |
+| `arch` | `ARCHITECTURE.md`, `STRUCTURE.md` |
+| `quality` | `CONVENTIONS.md`, `TESTING.md` |
+| `concerns` | `CONCERNS.md` |
+
+Full contract: [MAP-CONTRACT.md](MAP-CONTRACT.md).
+Shared architecture terms: `../jayden-workflow/ARCHITECTURE-LANGUAGE.md`.
+Shared gates: `../jayden-workflow/DECISION-GATES.md`.
 
 ## Process
 
-1. Read project instructions: `AGENTS.md`, `CLAUDE.md`, `CONTEXT.md`, ADRs if present.
-2. Explore repo with `rg`, `find`, manifests, configs, entrypoints, tests.
-3. Map current state only. No history, no guessed intent.
-4. Prefer prescriptive facts:
-   - good: "Put route handlers in `src/app/api/*/route.ts`."
-   - bad: "There are some route handlers."
-5. Use exact paths. Paths beat prose.
-6. Surface deepening opportunities in `CONCERNS.md` using depth/locality/leverage.
-7. Return confirmation only; do not paste full docs unless user asks.
+1. Check existing `.planning/codebase/`:
+   - If present, ask/decide refresh, update focus, or skip.
+   - If absent, create directory.
+2. Read project instructions and skills:
+   - `AGENTS.md`, `CLAUDE.md`, `CONTEXT.md`, ADRs if present.
+   - Project skills in `.claude/skills/`, `.agents/skills/`, `.cursor/skills/`, `.github/skills/`.
+3. Run 4 focused passes:
+   - `tech`: manifests, runtime, configs, env names only, integrations.
+   - `arch`: entrypoints, layers, modules, interfaces, seams, data flow.
+   - `quality`: conventions, tests, lint/build/typecheck patterns.
+   - `concerns`: debt, bugs, security, performance, fragility, test gaps.
+4. Prefer subagents when available. Fallback sequentially.
+5. Verify:
+   - all 7 docs exist
+   - each doc >20 lines unless repo is truly tiny
+   - docs include exact paths in backticks
+6. Scan generated docs for secret-looking values before suggesting commit.
+7. Return confirmation only: docs written, line counts, missing docs, next step.
 
-## Subagent Focus
+## Rules
 
-If subagents are available, split:
-
-| Focus | Writes |
-|---|---|
-| architecture | `ARCHITECTURE.md` |
-| structure | `STRUCTURE.md` |
-| conventions | `CONVENTIONS.md` |
-| concerns | `CONCERNS.md` |
-
-If not, write sequentially.
-
-## Document Contracts
-
-### ARCHITECTURE.md
-
-Include:
-- analysis date
-- pattern overview
-- key modules with interface + implementation summary
-- main seams/adapters
-- core data/request flow
-- error/state handling
-
-### STRUCTURE.md
-
-Include:
-- top-level directory tree
-- directory purposes
-- key file locations
-- where to add common new code
-- file/directory naming conventions
-
-### CONVENTIONS.md
-
-Include:
-- naming patterns
-- import organization
-- formatting/linting tools
-- error handling
-- test structure and commands
-
-### CONCERNS.md
-
-Include:
-- shallow modules
-- fragile seams
-- missing/weak tests
-- security/reliability risks
-- fix approach for each concern
-
-## Style
-
-Structured terse caveman:
-- short bullets
-- exact labels
-- no filler
-- keep technical meaning exact
-- switch to clearer prose for security/irreversible ambiguity
-
+- Current state only. No history guessing.
+- Paths beat prose: use `app/page.tsx`, not "homepage".
+- Be prescriptive: "Put route handlers in `app/api/*/route.ts`."
+- Use Matt terms in arch/concerns docs when useful.
+- `CONCERNS.md` must include impact + fix approach.
+- `STRUCTURE.md` must answer "where do I put this?"
+- `TESTING.md` must say what tests exist and how to add/run them.
+- Never read `.env*`, private keys, token files, credential files, or secret dirs.
+- Structured terse caveman by default; clear prose for security/irreversible risk.

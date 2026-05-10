@@ -171,11 +171,17 @@ Personal OpenCode/GSD-lite workflow layer. These branch from Matt-style skills w
 - **[caveman-help](./skills/jayden-workflow/caveman-help/SKILL.md)** — Quick reference for caveman modes, skills, and commands.
 - **[caveman-review](./skills/jayden-workflow/caveman-review/SKILL.md)** — Ultra-compressed code review comments.
 - **[compress](./skills/jayden-workflow/compress/SKILL.md)** — Legacy alias for caveman memory-file compression.
+- **[jayden-workflow](./skills/jayden-workflow/jayden-workflow/SKILL.md)** — Top-level layered workflow system for Map/New/Pivot -> Plan -> Check -> Execute -> Verify.
+- **[gsd-lite-check](./skills/jayden-workflow/gsd-lite-check/SKILL.md)** — Pre-execution gate for plan coverage, wiring, verification, and decision compliance.
 - **[gsd-lite-context](./skills/jayden-workflow/gsd-lite-context/SKILL.md)** — Defines project-local `.planning/` as the central GSD-lite context spine.
 - **[gsd-lite-debug](./skills/jayden-workflow/gsd-lite-debug/SKILL.md)** — Persistent GSD-lite debugging wrapper around Matt's `diagnose` loop.
+- **[gsd-lite-execute](./skills/jayden-workflow/gsd-lite-execute/SKILL.md)** — Execute approved plans from `.planning/current/*` while following map docs and stop gates.
+- **[gsd-lite-new-project](./skills/jayden-workflow/gsd-lite-new-project/SKILL.md)** — Initialize a lean project-local `.planning/` spine for a new repo or product idea.
+- **[gsd-lite-pivot](./skills/jayden-workflow/gsd-lite-pivot/SKILL.md)** — Reframe a stale or dead project into a new product direction with explicit keep/delete boundaries.
+- **[gsd-lite-plan](./skills/jayden-workflow/gsd-lite-plan/SKILL.md)** — Create decision-complete executable plans using meta-prompting, maps, and Matt architecture language.
 - **[gsd-lite-review](./skills/jayden-workflow/gsd-lite-review/SKILL.md)** — Compact GSD-style code review for changed files.
 - **[gsd-lite-verify](./skills/jayden-workflow/gsd-lite-verify/SKILL.md)** — Goal-backward verification for completed work.
-- **[map-codebase-architecture](./skills/jayden-workflow/map-codebase-architecture/SKILL.md)** — Map a codebase into lean GSD-compatible architecture docs using Matt-style architecture vocabulary.
+- **[map-codebase-architecture](./skills/jayden-workflow/map-codebase-architecture/SKILL.md)** — Map a codebase into GSD-compatible project memory docs using GSD mapper structure and Matt-style architecture vocabulary.
 
 ### Misc
 

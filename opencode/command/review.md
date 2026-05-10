@@ -6,9 +6,7 @@ argument-hint: "[--quick|--standard|--deep] [files or diff scope]"
 
 Use the `gsd-lite-review` skill.
 
-Find actionable bugs/security/reliability issues. Read `.planning/current/*` if present. Findings first. No style noise.
-
-Write compact review summary to `.planning/review/` or `.planning/current/HANDOFF.md` when useful.
+Pass diff/files/scope through. Return actionable findings first; write compact review state when useful.
 
 Scope:
 $ARGUMENTS
