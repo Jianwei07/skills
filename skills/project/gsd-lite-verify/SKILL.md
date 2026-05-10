@@ -26,6 +26,8 @@ gsd-lite-execute -> gsd-lite-verify
 - `.planning/current/PLAN.md`
 - `.planning/current/TODO.md`
 - `.planning/current/HANDOFF.md`
+- `.planning/current/PLAN.md` quality gates section
+- `TESTS.md` when present
 - changed files
 - acceptance criteria
 
@@ -38,5 +40,7 @@ gsd-lite-execute -> gsd-lite-verify
 - Do not trust summaries.
 - Derive must-haves from goal.
 - Check code exists, is substantive, wired, and data-backed.
-- Run cheap tests/checks.
+- Run all applicable quality gates from plan: FE/BE lint, format check, typecheck, tests.
+- Verify new tests live under `tests/`; if test set is non-trivial, verify `TESTS.md` documents coverage/gaps.
+- Flag duplicate, implementation-coupled, or bloated tests as verification failures.
 - Mark `UNCERTAIN` when only manual/browser validation can prove it.

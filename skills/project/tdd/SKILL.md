@@ -15,6 +15,21 @@ description: Test-driven development with red-green-refactor loop. Use when user
 
 See [tests.md](tests.md) for examples and [mocking.md](mocking.md) for mocking guidelines.
 
+## Test Placement and Registry
+
+- Put all new tests under `tests/` unless the repo has a strong existing contrary convention. If contrary convention exists, ask before changing.
+- Keep root `TESTS.md` once coverage is non-trivial. Track behavior covered, command to run, intentional gaps, and flaky/blocked tests.
+- Before adding a test, search `tests/` for existing coverage. Extend or replace duplicates instead of adding parallel tests.
+- Prefer one clear behavior test over many shallow variants.
+
+## Anti-Bloat / Bias Rules
+
+- Tests must fail for the right reason before implementation.
+- Do not write tests that simply mirror current implementation shape.
+- Do not snapshot broad UI/output unless it catches a real regression.
+- Do not mock internals to force pass; test through public Interfaces.
+- Remove duplicate tests during refactor.
+
 ## Anti-Pattern: Horizontal Slices
 
 **DO NOT write all tests first, then all implementation.** This is "horizontal slicing" - treating RED as "write all tests" and GREEN as "write all code."

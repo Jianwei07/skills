@@ -28,6 +28,7 @@ Write 7 docs to `.planning/codebase/`:
 Full contract: [MAP-CONTRACT.md](MAP-CONTRACT.md).
 Shared architecture terms: `../../core/jayden-workflow/ARCHITECTURE-LANGUAGE.md`.
 Shared gates: `../../core/jayden-workflow/DECISION-GATES.md`.
+Quality gates: `../../core/jayden-workflow/QUALITY-GATES.md`.
 
 ## Process
 
@@ -40,7 +41,7 @@ Shared gates: `../../core/jayden-workflow/DECISION-GATES.md`.
 3. Run 4 focused passes:
    - `tech`: manifests, runtime, configs, env names only, integrations.
    - `arch`: entrypoints, layers, modules, interfaces, seams, data flow.
-   - `quality`: conventions, tests, lint/build/typecheck patterns.
+   - `quality`: conventions, tests, lint/build/typecheck patterns, package manager, FE/BE quality commands, `TESTS.md` policy.
    - `concerns`: debt, bugs, security, performance, fragility, test gaps.
 4. Prefer subagents when available. Fallback sequentially.
 5. Verify:
@@ -58,6 +59,7 @@ Shared gates: `../../core/jayden-workflow/DECISION-GATES.md`.
 - Use Matt terms in arch/concerns docs when useful.
 - `CONCERNS.md` must include impact + fix approach.
 - `STRUCTURE.md` must answer "where do I put this?"
-- `TESTING.md` must say what tests exist and how to add/run them.
+- `TESTING.md` must say what tests exist, where tests live, how to add/run them, whether root `TESTS.md` exists, and exact FE/BE lint/format/typecheck/test commands.
+- Quality docs must identify package managers from lockfiles (`pnpm`/`npm`/`uv`/etc.) and missing standard commands.
 - Never read `.env*`, private keys, token files, credential files, or secret dirs.
 - Structured terse caveman by default; clear prose for security/irreversible risk.

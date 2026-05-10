@@ -40,6 +40,8 @@ Optional, create only when used:
   research/
   lint/
   pr/
+TESTS.md
+AGENTS.md / CLAUDE.md quality-gate block
 ```
 
 Active work lives in `.planning/current/*`.
@@ -52,4 +54,6 @@ Active work lives in `.planning/current/*`.
 - Do not store transcript.
 - Exact paths beat prose.
 - Use `DECISIONS.md`, `QUESTIONS.md`, `HANDOFF.md` to avoid context rebuild.
+- If code will be changed repeatedly, ensure `AGENTS.md`/`CLAUDE.md` records FE/BE lint, format, typecheck, and test commands.
+- Keep tests under `tests/`; use root `TESTS.md` when coverage is non-trivial.
 - Structured terse caveman by default; clear prose for security/irreversible ambiguity.

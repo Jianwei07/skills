@@ -84,6 +84,7 @@ Do not create a giant harness in project repos. Write only small project-local f
 - `.planning/current/TODO.md`
 - `.planning/current/HANDOFF.md`
 - `.planning/current/QUESTIONS.md` only when unresolved execution questions exist
+- `TESTS.md` when test coverage becomes non-trivial
 
 Everything else is on-demand.
 
@@ -93,11 +94,15 @@ Everything else is on-demand.
 - Architecture language: [ARCHITECTURE-LANGUAGE.md](ARCHITECTURE-LANGUAGE.md)
 - Decision gates: [DECISION-GATES.md](DECISION-GATES.md)
 - Artifacts: [ARTIFACTS.md](ARTIFACTS.md)
+- Quality gates: [QUALITY-GATES.md](QUALITY-GATES.md)
 
 ## Rules
 
 - Manual gated workflow. Plan/check never implies execute.
 - Execute only after explicit user command.
+- Quality gates are mandatory for code changes: discover FE/BE lint, format:check, typecheck, and test commands; run applicable checks before commit; record results in `.planning/current/VERIFY.md`.
+- Package/tooling setup must follow existing lockfiles (`pnpm`/`npm`/`uv`/etc.) and add only minimal dev dependencies needed for standard commands.
+- Tests live under `tests/`; use root `TESTS.md` when coverage becomes non-trivial; remove duplicate/bloated tests.
 - Caveman is core purpose: cut token usage by default. Terse, structured, no filler.
 - Skills define behavior. Commands route. Agents execute focused roles.
 - Use project-local `.planning/`; never global project state.

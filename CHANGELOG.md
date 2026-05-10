@@ -8,3 +8,4 @@
 - Tighten Jayden Workflow into a manual gated sequence: Direction Check -> Grill Gate -> Plan -> Check -> STOP.
 - Require explicit user command before gsd-lite-execute.
 - Rework improve-codebase-architecture into a lean candidate-and-gate workflow.
+- Add Quality Gates contract for pnpm/npm/uv command discovery, FE/BE lint-format-typecheck-test checks, AGENTS.md/CLAUDE.md quality blocks, and tests-under-`tests/` policy.

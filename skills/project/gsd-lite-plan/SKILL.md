@@ -47,12 +47,23 @@ If missing, add them. If `NEEDS_GRILL`, run `grill-me` first. If `BLOCKED` or `N
 - `.planning/current/TODO.md`
 - `.planning/current/DECISIONS.md` only for durable accepted decisions
 - `.planning/current/QUESTIONS.md` only when unresolved execution questions exist
+- Quality gate commands for FE/BE, copied from `.planning/codebase/TESTING.md` or discovered from manifests
 
 ## Plan Footer
 
 End `PLAN.md` with:
 
 ```text
+Quality gates:
+- FE lint: <command | N/A | MISSING>
+- FE format check: <command | N/A | MISSING>
+- FE typecheck: <command | N/A | MISSING>
+- FE test: <command | N/A | MISSING>
+- BE lint: <command | N/A | MISSING>
+- BE format check: <command | N/A | MISSING>
+- BE typecheck: <command | N/A | MISSING>
+- BE test: <command | N/A | MISSING>
+Tests policy: tests under tests/; update TESTS.md when non-trivial.
 Execution gate: CLOSED
 Execute only after explicit user command.
 Suggested command: execute current plan
@@ -66,6 +77,8 @@ Suggested command: execute current plan
 - Use Module/Interface/Seam/Depth language for architecture choices.
 - If ambiguity changes direction, Interface, keep/delete call, first-slice scope, irreversible action, or acceptance criteria -> run `grill-me` before plan.
 - If ambiguity only affects later execution -> record in `.planning/current/QUESTIONS.md`; planning may continue.
+- If quality commands are missing, add a setup task before feature/refactor tasks; use existing package manager (`pnpm`/`npm`/`uv`/etc.) and minimal dev deps.
+- Test tasks must create/update tests under `tests/` and update root `TESTS.md` when coverage is non-trivial.
 - Ask one grill question at a time. If code inspection can answer it, inspect instead of asking.
 - Do not execute.
 - Do not imply execution approval.

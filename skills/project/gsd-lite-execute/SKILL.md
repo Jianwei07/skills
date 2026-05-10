@@ -40,6 +40,7 @@ Treat `/execute` as workflow phrase unless runtime provides a real command.
 - `.planning/current/PLAN.md`
 - `.planning/current/TODO.md`
 - `.planning/current/HANDOFF.md` with `Check result: PASS`
+- `.planning/current/PLAN.md` quality gates section
 - `.planning/current/DECISIONS.md` when present
 - `.planning/codebase/STRUCTURE.md`
 - `.planning/codebase/CONVENTIONS.md`
@@ -55,6 +56,10 @@ Treat `/execute` as workflow phrase unless runtime provides a real command.
 
 - Refuse execution if user has not explicitly commanded it after check.
 - Execute only planned tasks.
+- Use existing package manager and tooling: respect lockfiles (`pnpm-lock.yaml`, `package-lock.json`, `uv.lock`, etc.); do not switch tools casually.
+- If quality tooling is missing, add minimal dev tooling/scripts first and document why.
+- Put all new tests under `tests/`; update root `TESTS.md` when tests become non-trivial.
+- Remove duplicate/bloated tests during refactor; keep behavior coverage through public Interfaces.
 - Follow map placement/style/testing guidance.
 - Stop for unplanned new library, persistence model, breaking Interface, or major Seam shift.
 - Auto-fix direct correctness/security blockers caused by task.
