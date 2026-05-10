@@ -92,6 +92,38 @@ Old or superseded skills retained for reference. Not part of the active set.
 - **[request-refactor-plan](./skills/deprecated/request-refactor-plan/SKILL.md)** — Create a detailed refactor plan with tiny commits via user interview, then file it as a GitHub issue. Use when user wants to plan a refactor, create a refactoring RFC, or break a refactor into safe incremental steps.
 - **[ubiquitous-language](./skills/deprecated/ubiquitous-language/SKILL.md)** — Extract a DDD-style ubiquitous language glossary from the current conversation, flagging ambiguities and proposing canonical terms. Saves to UBIQUITOUS_LANGUAGE.md. Use when user wants to define domain terms, build a glossary, harden terminology, create a ubiquitous language, or mentions "domain model" or "DDD".
 
+## Install
+
+Skills are global to the agent runtime, not copied into each project repo.
+Project repos should only get small local context files such as `.planning/`, `AGENTS.md`, or `CLAUDE.md` when needed.
+
+### Hermes
+
+```bash
+./scripts/install-hermes.sh
+```
+
+This symlinks active skills from `skills/core`, `skills/project`, and `skills/misc` into `~/.hermes/skills`.
+It does not install `skills/imported` or `skills/deprecated`.
+
+After installing, start a new Hermes session or run `/reload-skills`.
+
+### OpenCode
+
+```bash
+./scripts/install-opencode.sh
+```
+
+This syncs thin OpenCode commands/agents and links the same active skill set into `~/.agents/skills`.
+
+### Claude Code
+
+```bash
+./scripts/link-skills.sh
+```
+
+This links the active skill set into `~/.claude/skills`.
+
 ## Maintenance
 
 ```bash
