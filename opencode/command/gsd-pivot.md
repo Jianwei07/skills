@@ -1,6 +1,6 @@
 ---
 description: Reframe stale project direction and create first GSD-lite execution plan
-agent: gsd-lite-pivot-planner
+agent: jayden-planner
 argument-hint: "[new direction, keep/delete preferences, first slice]"
 ---
 

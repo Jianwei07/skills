@@ -1,6 +1,6 @@
 ---
 description: Explain a code area in its wider system context
-agent: plan
+agent: jayden-planner
 argument-hint: "[file, module, behavior, or question]"
 ---
 

@@ -1,6 +1,6 @@
 ---
 description: Map codebase into GSD-compatible project memory docs
-agent: build
+agent: jayden-planner
 argument-hint: "[optional: refresh|skip|tech|arch|quality|concerns]"
 ---
 

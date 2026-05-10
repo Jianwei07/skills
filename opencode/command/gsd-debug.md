@@ -1,6 +1,6 @@
 ---
 description: Debug with persistent GSD-lite session state
-agent: gsd-lite-debugger
+agent: jayden-debugger
 argument-hint: "[list | status <slug> | continue <slug> | bug description]"
 ---
 

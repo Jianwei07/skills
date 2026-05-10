@@ -1,6 +1,6 @@
 ---
-description: Execute an approved GSD-lite plan using map conventions
-agent: gsd-lite-executor
+description: Execute an explicitly approved GSD-lite plan with quality gates
+agent: jayden-builder
 argument-hint: "[plan file or pasted plan]"
 ---
 

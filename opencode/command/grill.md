@@ -1,6 +1,6 @@
 ---
 description: Clarify an ambiguous plan before implementation
-agent: plan
+agent: jayden-planner
 argument-hint: "[plan, feature, refactor, or design idea]"
 ---
 

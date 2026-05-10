@@ -1,6 +1,6 @@
 ---
 description: Turn the current context into a PRD
-agent: plan
+agent: jayden-planner
 argument-hint: "[optional focus]"
 ---
 

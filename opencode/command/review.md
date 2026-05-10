@@ -1,6 +1,6 @@
 ---
 description: Review changed files for bugs and security issues
-agent: gsd-lite-reviewer
+agent: jayden-reviewer
 argument-hint: "[--quick|--standard|--deep] [files or diff scope]"
 ---
 

@@ -1,6 +1,6 @@
 ---
 description: Debug with Matt Pocock's disciplined diagnosis loop
-agent: build
+agent: jayden-debugger
 argument-hint: "[bug, regression, flaky test, or performance issue]"
 ---
 

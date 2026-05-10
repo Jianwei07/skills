@@ -1,25 +1,51 @@
-# Jayden's OpenCode Kit
+# Jayden OpenCode Adapter
 
-This directory is the OpenCode-specific part of the repo.
+Purpose: thin OpenCode runtime layer for the shared skills repo.
 
-It intentionally stays small:
+Keep source of truth in `skills/`. Do not copy the harness into project repos.
 
-- `command/` contains thin slash-command wrappers.
-- `opencode.json` keeps OpenCode lean and skill-first.
-- `agents/` contains small Jayden Workflow agents when a role boundary earns its prompt cost.
-- `skills/` is reserved for OpenCode-only skills that should not live in the shared `skills/` tree.
+## Pieces
 
-Install/sync strategy is still undecided. Use `../scripts/install-opencode.sh` only with temp env vars unless you intentionally want to update live OpenCode config.
+- `command/` — slash-command wrappers. Cheap routing only; no workflow logic.
+- `agents/` — four role prompts used by commands when a role boundary earns the cost.
+- `opencode.json` — minimal OpenCode defaults.
+- `skills/` — reserved for OpenCode-only skills; normally empty.
 
-Key Jayden Workflow commands:
+Commands do not auto-run each other. They load an agent + prompt the shared skill. Manual gates still apply.
+
+## Agent Roles
 
 ```text
-/jayden-workflow
-/gsd-new-project
-/gsd-pivot
-/gsd-map
-/gsd-plan
-/gsd-check
-/gsd-execute
-/verify
+jayden-planner   map/pivot/direction/grill/plan/check; never executes
+jayden-builder   explicit execute only; scoped implementation + quality gates
+jayden-reviewer  review/verify after changes
+jayden-debugger  reproduce/root-cause/fix bugs
 ```
+
+Do not create one agent per GSD step. Steps are sequential workflow state, not separate workers.
+
+## Main Commands
+
+```text
+/jayden-workflow   entry/router
+/gsd-map           map repo
+/gsd-pivot         stale/dead project direction
+/gsd-plan          draft plan; stop
+/gsd-check         pre-exec check; stop
+/gsd-execute       explicit approved execution only
+/verify            verify result
+/review            review changed files
+/gsd-debug         debug loop
+```
+
+Other commands are aliases/helpers (`/caveman`, `/grill-me`, `/tdd`, etc.). Keep them thin or remove.
+
+## Install
+
+From repo root:
+
+```bash
+./scripts/install-opencode.sh
+```
+
+Then restart OpenCode.

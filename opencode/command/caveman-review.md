@@ -1,6 +1,6 @@
 ---
 description: Write terse actionable code review comments
-agent: build
+agent: jayden-reviewer
 argument-hint: "[PR, diff, or files]"
 ---
 

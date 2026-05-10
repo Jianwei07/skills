@@ -1,6 +1,6 @@
 ---
 description: Break a plan into independently grabbable issues
-agent: plan
+agent: jayden-planner
 argument-hint: "[plan, PRD, or feature]"
 ---
 

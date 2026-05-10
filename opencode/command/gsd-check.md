@@ -1,6 +1,6 @@
 ---
 description: Check a GSD-lite plan before execution
-agent: gsd-lite-checker
+agent: jayden-planner
 argument-hint: "[plan file or pasted plan]"
 ---
 

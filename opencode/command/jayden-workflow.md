@@ -1,6 +1,6 @@
 ---
 description: Route work through Jayden Workflow
-agent: build
+agent: jayden-planner
 argument-hint: "[goal, repo state, or command intent]"
 ---
 

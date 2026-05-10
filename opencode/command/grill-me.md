@@ -1,6 +1,6 @@
 ---
 description: Relentlessly clarify a plan without touching code
-agent: plan
+agent: jayden-planner
 argument-hint: "[plan or idea]"
 ---
 

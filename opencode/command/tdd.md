@@ -1,6 +1,6 @@
 ---
 description: Build or fix with red-green-refactor
-agent: build
+agent: jayden-builder
 argument-hint: "[feature or bug]"
 ---
 

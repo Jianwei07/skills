@@ -1,6 +1,6 @@
 ---
 description: Initialize a lean GSD-lite project spine
-agent: gsd-lite-project-starter
+agent: jayden-planner
 argument-hint: "[project idea, constraints, or repo goal]"
 ---
 

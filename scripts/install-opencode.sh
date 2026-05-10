@@ -9,6 +9,21 @@ BACKUP_DIR="${SKILLS_BACKUP_DIR:-$HOME/.opencode-backups/skills-install}"
 mkdir -p "$CONFIG_DIR/command" "$CONFIG_DIR/agents" "$CONFIG_DIR/skills" "$AGENTS_SKILLS_DIR"
 mkdir -p "$BACKUP_DIR"
 
+# Prune old curated OpenCode adapter files that were intentionally debloated.
+# Do not delete arbitrary user commands/agents.
+for stale in \
+  gsd-lite-checker.md \
+  gsd-lite-debugger.md \
+  gsd-lite-executor.md \
+  gsd-lite-mapper.md \
+  gsd-lite-pivot-planner.md \
+  gsd-lite-planner.md \
+  gsd-lite-project-starter.md \
+  gsd-lite-reviewer.md \
+  gsd-lite-verifier.md; do
+  rm -f "$CONFIG_DIR/agents/$stale"
+done
+
 echo "Installing OpenCode commands..."
 find "$REPO/opencode/command" -maxdepth 1 -type f -name '*.md' -print0 |
 while IFS= read -r -d '' command_file; do

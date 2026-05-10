@@ -1,6 +1,6 @@
 ---
 description: Verify completed work achieved the promised outcome
-agent: gsd-lite-verifier
+agent: jayden-reviewer
 argument-hint: "[goal, issue, PRD, files, or acceptance criteria]"
 ---
 

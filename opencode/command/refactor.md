@@ -1,6 +1,6 @@
 ---
 description: Find architecture improvements using Matt's codebase architecture skill
-agent: plan
+agent: jayden-planner
 argument-hint: "[module, feature area, or concern]"
 ---
 

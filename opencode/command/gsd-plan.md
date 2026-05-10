@@ -1,6 +1,6 @@
 ---
-description: Create an executable Jayden Workflow plan
-agent: gsd-lite-planner
+description: Draft a gated Jayden Workflow plan and stop before execution
+agent: jayden-planner
 argument-hint: "[goal, issue, PRD, or feature request]"
 ---
 
