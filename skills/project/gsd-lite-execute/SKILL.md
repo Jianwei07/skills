@@ -52,9 +52,42 @@ Treat `/execute` as workflow phrase unless runtime provides a real command.
 - Updated `.planning/current/HANDOFF.md`
 - Changed source files
 
+## Commit Checkpoints
+
+During execution, prevent giant diffs.
+
+Before editing:
+
+```text
+Pre-execute checkpoint:
+- branch: <name>
+- existing changed paths: <count>
+- commit state: clean | dirty
+```
+
+Rules:
+
+- If the working tree is dirty before execution, stop and ask whether to checkpoint, stash, continue, or abort.
+- After each coherent slice, inspect `git status --short` and `git diff --stat`.
+- If changed paths exceed ~10, or changes cross unrelated seams (planning docs + tooling + feature + tests), stop for a checkpoint before continuing.
+- Use `caveman-commit` to draft terse conventional commit messages for each checkpoint.
+- Do not create PRs during execute. PR prep belongs after `gsd-lite-verify` and explicit user request.
+- Prefer small commits that each pass applicable quality gates over one large mixed commit.
+
+Suggested commit slices:
+
+```text
+1. planning docs only
+2. tooling/quality setup only
+3. feature/source change
+4. tests/docs for that feature
+5. cleanup/hardening
+```
+
 ## Rules
 
 - Refuse execution if user has not explicitly commanded it after check.
+- Start with a pre-execute checkpoint (`git status --short --branch`, changed path count, dirty/clean state).
 - Execute only planned tasks.
 - Use existing package manager and tooling: respect lockfiles (`pnpm-lock.yaml`, `package-lock.json`, `uv.lock`, etc.); do not switch tools casually.
 - If quality tooling is missing, add minimal dev tooling/scripts first and document why.
